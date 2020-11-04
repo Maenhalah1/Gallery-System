@@ -16,19 +16,34 @@ class users {
     // Find user By his id and get it records
     public static function find_user_by_ID ($id) {
 
-        $result = self::find_this_query("SELECT * FROM users WHERE id = $id LIMIT 1");
+        $result = self::find_this_query("SELECT * FROM users WHERE id = ? LIMIT 1",array($id));
         return  !empty($result) ? array_shift($result) : false; //check if has result and get first index from array
     }
+
+    // verify username and password that written by user
+    public static function verify_user($username,$password) {
+        $sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+        $founded = self::find_this_query($sql, array($username,$password));
+        $founded = !empty($founded) ? array_shift($founded) : false;
+        return $founded;
+
+    }
+
     // Execute Query and fetch it
-    public static function find_this_query($sql) {
+    public static function find_this_query($sql,$arr=null) {
         global $database;
-        $res = $database->query($sql);
+        $res = $database->query($sql,$arr);
         $rows = $res->fetchAll();
-        $obj_array = array();
-        foreach ($rows as $row) {
-            $obj_array[] = self::istantation($row);
+        if(!empty($rows)) {
+            $obj_array = array();
+            foreach ($rows as $row) {
+                $obj_array[] = self::istantation($row);
+            }
+            return $obj_array;
+        } else {
+            return null;
+
         }
-        return  $obj_array;
 
 
 

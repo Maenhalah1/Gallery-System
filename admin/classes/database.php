@@ -19,9 +19,9 @@ class Database {
 			die("Connection Faild To Data Base " . $e->getMessage());
 		}
 	}
-	public function query($sql) {
+	public function query($sql,$values = null) {
 		$stmt = $this->conn->prepare($sql);
-		$stmt->execute();
+		$stmt->execute($values);
 		$this->check_query($stmt);
 		return $stmt;
 	}

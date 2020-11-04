@@ -222,3 +222,23 @@ ul.alert-dropdown {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+.loginAdmin {
+    color:#FFF;
+}
+.loginAdmin .headerAdmin {
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+
+}
+.loginAdmin .Admindanger {
+    background: #444;
+    padding: 12px;
+    text-align: center;
+    color:#d9534f;
+    font-weight: bold;
+
+}
+
+
