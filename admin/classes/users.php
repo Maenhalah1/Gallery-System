@@ -63,7 +63,29 @@ class users {
         $property_array = get_object_vars($this);
         return array_key_exists($prop, $property_array);
     }
+    // Create a user and insert it into table users in data base
+    public function createuser() {
+        global $database;
+        $sql = "INSERT INTO users(username,password,email,first_name,last_name)";
+        $sql .= "VALUES(:uname, :pass, :eml, :fname, :lname)";
+        $values = array(
+            ':uname'    => $this->username,
+            ':pass'     => $this->password,
+            ':eml'      => $this->email,
+            ':fname'    => $this->first_name,
+            ':lname'    => $this->last_name
+        );
 
+        $res = $database->query($sql,$values);
+        if($res){
+            $this->id = $database->last_id();
+            return true;
+        }else {
+            return false;
+        }
+
+
+    }
 
 
 

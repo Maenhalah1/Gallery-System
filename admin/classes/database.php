@@ -30,6 +30,9 @@ class Database {
 			die("Query Faild");
 		}
 	}
+	public function last_id() {
+	     return $this->conn->lastInsertId();
+    }
 }
 $database = new database();
 ?>

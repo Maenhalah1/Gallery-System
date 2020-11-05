@@ -22,6 +22,21 @@
                             }
                             echo "<br>";
                             ?>
+                        <?php
+
+//                        $user1 = new users();
+//                        $user1->username = "ahmad123";
+//                        $user1->email = "a@a.com";
+//                        $user1->password = "123";
+//                        $user1->first_name = "ahmad";
+//                        $user1->last_name = "mohammad";
+//                        $user1->createuser();
+//                        echo $user1->id;
+
+
+                        ?>
+
+
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
