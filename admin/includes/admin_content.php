@@ -30,10 +30,35 @@
 //                        $user1->password = "123";
 //                        $user1->first_name = "ahmad";
 //                        $user1->last_name = "mohammad";
-//                        $user1->createuser();
+//                        $user1->create_user();
 //                        echo $user1->id;
-
-
+                        $user2 = users::find_user_by_ID(3);
+                        if($user2) {
+                            $user2->email = 'maen2@gmail.com';
+                            $res = $user2->save();
+                            echo $res ? "succssefully updated" : "no updated to data";
+                        }
+//                        $user2 = users::find_user_by_ID(14);
+//                        if($user2) {
+//                            $res = $user2->delete_user();
+//                            echo $res ? "Deleted user Succssfully" : "No Delete any think";
+//                        }else{
+//                            echo "there isn't user has this id";
+//                        }
+//                        $user2 = users::find_user_by_ID(3);
+//                        if($user2) {
+//                            $user2->email = 'maen123a@gmail.com';
+//                            $res = $user2->save();
+//                            echo $res ? "succssefully updated" : "no updated to data";
+//                        }
+//                        $user2 = new users();
+//                        $user2->username = "example223212";
+//                        $user2->password = "123";
+//                        $user2->email = "123";
+//                        $user2->first_name = "ex1";
+//                        $user2->last_name = "ex2";
+//                        $r = $user2->save();
+//                        echo $r ? "Created" : "Faild";
                         ?>
 
 
