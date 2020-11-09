@@ -20,9 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14942bd5-765e-433a-bb46-12b258f76c04" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/admin/classes/db_object.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/classes/photo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/classes/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/classes/session.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/classes/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/classes/users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/css/sb-admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/css/sb-admin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/includes/admin_content.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/admin_content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/includes/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/includes/init.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/init.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/includes/n_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/n_config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/photos.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/photos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/uploads.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/uploads.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +84,8 @@
       <workItem from="1604532069191" duration="4966000" />
       <workItem from="1604588387559" duration="3824000" />
       <workItem from="1604704260130" duration="9711000" />
+      <workItem from="1604783554653" duration="10577000" />
+      <workItem from="1604869531217" duration="10985000" />
     </task>
     <servers />
   </component>
@@ -102,10 +113,10 @@
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="272" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1360.728@0.0.1360.728" timestamp="1604360017499" />
-    <state x="514" y="287" key="NewPhpFileDialog" timestamp="1604449808849">
+    <state x="514" y="287" key="NewPhpFileDialog" timestamp="1604789261203">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="514" y="287" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1604449808849" />
+    <state x="514" y="287" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1604789261203" />
     <state x="336" y="162" key="run.anything.popup" timestamp="1604439173426">
       <screen x="0" y="0" width="1360" height="728" />
     </state>

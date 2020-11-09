@@ -1,4 +1,20 @@
 <?php include("includes/header.php"); ?>
+<?php if(!$session->get_signed_in()) { Redirect("login.php");}?>
+<?php
+    if(isset($_POST['submit'])) {
+
+        $photo = new photo();
+        $photo->title = $_POST['title'];
+        $photo->set_file($_FILES['upload_file']);
+
+        if($photo->save()){
+            $message = "Photo uploded succesfully";
+        }else{
+            $message = join("<br>", $photo->error);
+        }
+    }
+
+?>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -10,7 +26,6 @@
         </nav>
 
         <div id="page-wrapper">
-
             
             <div class="container-fluid">
 
@@ -21,14 +36,22 @@
                             Uploads
                             <small>Subheading</small>
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> Blank Page
-                            </li>
-                        </ol>
+                        <div class="col-md-6">
+                            <?php echo isset($message) ? $message : "";?>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+
+                                    <div class="form-group">
+                                        <input type="text" name="title" placeholder="Title" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" name="upload_file" >
+                                    </div>
+
+
+                                    <input type="submit" value="Upload" class="btn btn-primary" name="submit">
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -240,5 +240,10 @@ ul.alert-dropdown {
     font-weight: bold;
 
 }
+.img-gallery {
+    max-width: 150px;
+    max-height: 150px;
+
+}
 
 
