@@ -3,7 +3,7 @@
 // this function use to auto loading class from classes dirctory that is not inistization in project
 function autoloadclass($class){
     $class = strtolower($class);
-    $path = "classes" . SB . $class . ".php";
+    $path = "classes" . DS . $class . ".php";
     if (file_exists($path) && !class_exists($class)) {
         require_once($path);
     } else if (!file_exists($path)) {

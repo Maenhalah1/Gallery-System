@@ -10,55 +10,39 @@
                         </h1>
                         <?php
 
-                            $users = users::get_all_users();
+                            echo "<h1>users</h1>";
+                            $users = users::get_all_fields();
                             foreach ($users as $user) {
                                 echo $user->username . "<br>";
                             }
-                            $user = users::find_user_by_ID(1);
-                            if(!empty($user) ) {
-                                echo $user->first_name;
-                            }else {
-                                echo "no data";
+                        echo "<h1>photos</h1>";
+                        $photos = photo::get_all_fields();
+                        if(!empty($photos)) {
+                            foreach ($photos as $photo) {
+                                echo $photo->title . "<br>";
                             }
-                            echo "<br>";
-                            ?>
-                        <?php
-
-//                        $user1 = new users();
-//                        $user1->username = "ahmad123";
-//                        $user1->email = "a@a.com";
-//                        $user1->password = "123";
-//                        $user1->first_name = "ahmad";
-//                        $user1->last_name = "mohammad";
-//                        $user1->create_user();
-//                        echo $user1->id;
-                        $user2 = users::find_user_by_ID(3);
-                        if($user2) {
-                            $user2->email = 'maen2@gmail.com';
-                            $res = $user2->save();
-                            echo $res ? "succssefully updated" : "no updated to data";
+                        }else {
+                            echo "no photo";
                         }
-//                        $user2 = users::find_user_by_ID(14);
-//                        if($user2) {
-//                            $res = $user2->delete_user();
-//                            echo $res ? "Deleted user Succssfully" : "No Delete any think";
-//                        }else{
-//                            echo "there isn't user has this id";
-//                        }
-//                        $user2 = users::find_user_by_ID(3);
-//                        if($user2) {
-//                            $user2->email = 'maen123a@gmail.com';
-//                            $res = $user2->save();
-//                            echo $res ? "succssefully updated" : "no updated to data";
-//                        }
-//                        $user2 = new users();
-//                        $user2->username = "example223212";
-//                        $user2->password = "123";
-//                        $user2->email = "123";
-//                        $user2->first_name = "ex1";
-//                        $user2->last_name = "ex2";
-//                        $r = $user2->save();
-//                        echo $r ? "Created" : "Faild";
+                            $photo = new photo();
+                            $photo->title = "car1";
+                            $photo->size = 50;
+                            //$r = $photo->create();
+                           // echo $r ? "Created" : "Faild";
+
+//                            $user = users::find_by_ID(100);
+//                            if(!empty($user) ) {
+//                                echo $user->first_name;
+//                            }else {
+//                                echo "no data";
+//                            }
+//                            echo "<br>";
+
+//                        $user2 = users::find_by_ID(27);
+//
+//                        $r = $user2->delete();
+//                       echo $r ? "Deleted" : "Faild";
+
                         ?>
 
 

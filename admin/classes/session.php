@@ -36,5 +36,5 @@ class session {
     }
 
 }
-$session = new session();
+
 ?>
