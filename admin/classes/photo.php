@@ -2,7 +2,7 @@
 class photo extends db_object {
 
     protected static $db_table = "photos";
-    protected static $db_table_fields = array("id", "title","caption","description", "type", "filename", "size","alternate_text");
+    protected static $db_table_fields = array("id", "title","caption","description", "type", "filename", "size","alternate_text" , "upload_date");
     public $id;
     public $title;
     public $caption;
@@ -11,6 +11,7 @@ class photo extends db_object {
     public $filename;
     public $alternate_text;
     public $size;
+    public $upload_date;
 
     public $tmp_path;
     public $upload_dir = 'images';
@@ -38,6 +39,7 @@ class photo extends db_object {
             $this->size = $file['size'];
             $this->tmp_path = $file['tmp_name'];
             $this->type = $file['type'];
+            $this->upload_date = Date("Y-m-d H-i-s",time());
             return true;
         }
     }
