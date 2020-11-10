@@ -68,7 +68,7 @@ if(empty($_GET['do']) || empty($_GET['id']) || !isset($_GET['do']) || !isset($_G
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row">
-                    <div class="col-lg-10">
+                    <div class="col-lg-12">
                         <h1 class="page-header">
                             Photos
                             <small>Subheading</small>
@@ -77,7 +77,8 @@ if(empty($_GET['do']) || empty($_GET['id']) || !isset($_GET['do']) || !isset($_G
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <input type="text" name='title' placeholder='Title' class="form-control" value="<?php echo $photo->title; ?>">
-                                </div>     
+                                </div> 
+                                <a href="#" class="thumbnail"><img src="<?php echo $photo->picture_path();?>" class='img-gallery'></a>    
                                 <div class="form-group">
                                         <label for="caption">Caption</label>
                                     <input type="text" name='caption' class="form-control" value="<?php echo $photo->caption; ?>" >
@@ -89,9 +90,10 @@ if(empty($_GET['do']) || empty($_GET['id']) || !isset($_GET['do']) || !isset($_G
                                 
                                 <div class="form-group">
                                         <label for="caption">Description</label>
-                                    <textarea class="form-control" name='description' rows="10" cols="30"><?php echo $photo->description; ?></textarea>
+                                    <textarea class="form-control text-editor" name='description' rows="10" cols="30"><?php echo $photo->description; ?></textarea>
                                 </div>
                             </div>
+                            
                             <div class="col-md-4" >
                                 <div  class="photo-info-box">
                                     <div class="info-box-header">
@@ -100,19 +102,29 @@ if(empty($_GET['do']) || empty($_GET['id']) || !isset($_GET['do']) || !isset($_G
                                     <div class="inside">
                                         <div class="box-inner">
                                         <p class="text">
-                                        <span class="glyphicon glyphicon-calendar"></span> Uploaded on: April 22, 2030 @ 5:26
+                                        <span class="glyphicon glyphicon-calendar"></span> Uploaded on: <?php echo Date("F d Y g:i A " ,strtotime($photo->upload_date))?>
                                         </p>
                                         <p class="text ">
-                                            Photo Id: <span class="data photo_id_box">34</span>
+                                            Photo Id: <span class="data photo_id_box"><?php echo $photo->id;?></span>
                                         </p>
                                         <p class="text">
-                                            Filename: <span class="data">image.jpg</span>
+                                            Filename: <span class="data"><?php echo $photo->filename;?></span>
                                         </p>
                                         <p class="text">
-                                        File Type: <span class="data">JPG</span>
+                                            <?php $type = explode(".",$photo->filename); $type = end($type); $type= strtoupper($type);?>
+                                        File Type: <span class="data"><?php echo $type;?></span>
                                         </p>
                                         <p class="text">
-                                        File Size: <span class="data">3245345</span>
+                                        <?php 
+                                        if($photo->size > 1000000) {
+                                            $t = "MB";
+                                            $size = number_format($photo->size * 0.000001,1) ;
+                                        }else {
+                                            $t = "KB";
+                                            $size = number_format($photo->size * 0.001,1);
+                                        }
+                                        ?>
+                                        File Size: <span class="data"><?php echo $size . " " . $t;?></span>
                                         </p>
                                         </div>
                                         <div class="info-box-footer clearfix">
@@ -134,6 +146,9 @@ if(empty($_GET['do']) || empty($_GET['id']) || !isset($_GET['do']) || !isset($_G
 
   <?php include("includes/footer.php"); ?>
 
+<?php else: ?>
+     <?php include("includes/init.php"); ?>
+    <?php Redirect("photos.php");?>
 
 
        
