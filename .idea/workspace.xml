@@ -19,20 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14942bd5-765e-433a-bb46-12b258f76c04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/classes/db_object.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/classes/photo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/classes/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/classes/session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/classes/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/classes/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/css/sb-admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/css/sb-admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/admin_content.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/admin_content.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/init.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/init.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/n_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/n_config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/photos.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/photos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/uploads.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/uploads.php" afterDir="false" />
-    </list>
+    <list default="true" id="14942bd5-765e-433a-bb46-12b258f76c04" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,6 +73,7 @@
       <workItem from="1604704260130" duration="9711000" />
       <workItem from="1604783554653" duration="10577000" />
       <workItem from="1604869531217" duration="10985000" />
+      <workItem from="1604958170518" duration="112000" />
     </task>
     <servers />
   </component>

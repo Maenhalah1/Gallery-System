@@ -16,7 +16,9 @@ body {
         margin-top: 50px;
     }
 }
-
+.form-group textarea{
+    resize: none;
+}
 #wrapper {
     padding-left: 0;
 }

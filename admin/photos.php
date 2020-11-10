@@ -38,7 +38,14 @@ $photos = photo::get_all_fields();
                                 <tbody>
                                 <?php foreach ($photos as $photo):?>
                                 <tr>
-                                    <td><img class='img-gallery'src="<?php echo $photo->picture_path(); ?>" alt="image"></td>
+                                    <td><img class='img-gallery'src="<?php echo $photo->picture_path(); ?>" alt="image">
+                                    <div>
+                                        <a href="action_pic.php?do=delete&id=<?php echo $photo->id;?>">Delete</a>
+                                        <a href="action_pic.php?do=edit&id=<?php echo $photo->id;?>"">Edit</a>
+                                        <a href="#">View</a>
+                                    </div>
+                                    </td>
+                                    
                                     <td><?php echo $photo->id; ?></td>
                                     <td><?php echo $photo->filename; ?></td>
                                     <td><?php echo $photo->title; ?></td>

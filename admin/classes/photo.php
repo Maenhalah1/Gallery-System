@@ -2,13 +2,16 @@
 class photo extends db_object {
 
     protected static $db_table = "photos";
-    protected static $db_table_fields = array("id", "title","description", "type", "filename", "size");
+    protected static $db_table_fields = array("id", "title","caption","description", "type", "filename", "size","alternate_text");
     public $id;
     public $title;
+    public $caption;
     public $description;
     public $type;
     public $filename;
+    public $alternate_text;
     public $size;
+
     public $tmp_path;
     public $upload_dir = 'images';
     public $error = array();
@@ -41,7 +44,6 @@ class photo extends db_object {
 
     public function save() {
         if($this->id) {
-            echo "create";
             $this->update();
             return true;
         } else {
@@ -52,8 +54,6 @@ class photo extends db_object {
                 $this->error[] = "the file was not available";
                 return false;
             } else {
-
-                echo "create";
                 $target_path = SITE_PATH . DS . 'admin' . DS . $this->upload_dir . DS .$this->filename;
                 if(move_uploaded_file($this->tmp_path, $target_path)) {
 
@@ -71,6 +71,19 @@ class photo extends db_object {
     public function picture_path(){
         if(isset($this->filename)) {
             return $this->upload_dir . DS . $this->filename;
+        }else{
+            return false;
+        }
+    }
+
+    public function delete_photo() {
+        if(!empty($this->filename)) {
+            if($this->delete()) {
+                $target = SITE_PATH . DS . 'admin' . DS . $this->picture_path();
+                return unlink($target) ? true : false;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
