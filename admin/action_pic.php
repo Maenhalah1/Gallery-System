@@ -118,10 +118,10 @@ if(empty($_GET['do']) || empty($_GET['id']) || !isset($_GET['do']) || !isset($_G
                                         <?php 
                                         if($photo->size > 1000000) {
                                             $t = "MB";
-                                            $size = number_format($photo->size * 0.000001,1) ;
+                                            $size = number_format($photo->size * 0.000001, 1) ;
                                         }else {
                                             $t = "KB";
-                                            $size = number_format($photo->size * 0.001,1);
+                                            $size = number_format($photo->size * 0.001, 1);
                                         }
                                         ?>
                                         File Size: <span class="data"><?php echo $size . " " . $t;?></span>
