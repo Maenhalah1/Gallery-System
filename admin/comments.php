@@ -1,5 +1,8 @@
 <?php include("includes/header.php"); ?>
-
+<?php if(!$session->get_signed_in()) { Redirect("login.php");}?>
+<?php
+$comments = comment::get_all_fields();
+?>
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -18,17 +21,41 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Comments
-                            <small>Subheading</small>
+                            COMMENTS
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> Blank Page
-                            </li>
-                        </ol>
+                        <div class="col-md-12">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Author</th>
+                                    <th>Body</th>
+                                    <th>Added comment date</th>
+                                    
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($comments as $comment):?>
+                                <tr>
+                                    <td><?php echo $comment->id; ?>
+                                        <div class='action_links'>
+                                            <a href="action_comment.php?do=delete&id=<?php echo $comment->id;?>">Delete</a>
+                                        </div>
+                                    </td>
+
+                                    
+                                    <td><?php echo $comment->author; ?></td>
+                                    <td><?php echo $comment->body; ?></td>
+                                    <td><?php echo $comment->added_date; ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+                            
+                            
+
                     </div>
                 </div>
             </div>
