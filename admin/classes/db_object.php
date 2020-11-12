@@ -1,6 +1,7 @@
 <?php
 class db_object {
     protected static $db_table = "users";
+    protected static $db_table_fields = array();
     // get all fields recorders
     public static function get_all_fields()
     {
