@@ -1,0 +1,27 @@
+.showing-box-pic {
+    width: 210px !important;
+    height: 160px !important;
+    position: relative;
+  
+    
+}
+
+.showing-pic {
+    max-width: 200px !important;
+    max-height: 150px !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+      
+}
+.main-photo {
+    max-width: 700px;
+    max-height: 700px;
+}
+footer{
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+}

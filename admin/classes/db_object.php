@@ -121,6 +121,13 @@ class db_object {
         return $stmt->rowCount() ? true : false;
     }
 
+    public static function count_all_records(){
+        global $database;
+        $sql = "SELECT COUNT(*) FROM " . static::$db_table;
+        $stmt = $database->query($sql);
+        $data = $stmt->fetch();
+        return (int)array_shift($data);
+    }
 
 
 

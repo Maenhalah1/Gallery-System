@@ -2,10 +2,18 @@
 class session {
     private $signed_in = false;
     public $user_id;
+    public $count;
 
     public function __construct(){
         session_start();
         $this->check_login();
+    }
+    public function visitor_count (){
+        if(isset($_SESSION['count_visit'])){
+            return $this->count = ++$_SESSION['count_visit'];
+        }else{
+            return $this->count = $_SESSION['count_visit'] = 1;
+        }
     }
     public function get_signed_in (){
         return $this->signed_in;

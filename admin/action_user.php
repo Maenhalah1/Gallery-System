@@ -1,4 +1,5 @@
 
+ <?php include("includes/init.php"); ?>
 <?php
 if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
     

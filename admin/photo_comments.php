@@ -1,7 +1,10 @@
 <?php include("includes/header.php"); ?>
 <?php if(!$session->get_signed_in()) { Redirect("login.php");}?>
+<?php if(!isset($_GET['id']) || empty($_GET['id'])) { Redirect("photos.php");}?>
 <?php
-$comments = comment::get_all_fields();
+$_GET['id'] = filter_var($_GET['id'], FILTER_SANITIZE_STRING);
+$comments = comment::find_comments_by_photo_id($_GET['id']);
+if(!empty($comments)):
 ?>
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -13,7 +16,7 @@ $comments = comment::get_all_fields();
         </nav>
 
         <div id="page-wrapper">
-
+        
             
             <div class="container-fluid">
 
@@ -30,8 +33,7 @@ $comments = comment::get_all_fields();
                                     <th>ID</th>
                                     <th>Author</th>
                                     <th>Body</th>
-                                    <th>Added comment date</th>
-                                    
+                                    <th>Added comment date</th>                                 
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -52,15 +54,13 @@ $comments = comment::get_all_fields();
                                 </tbody>
                             </table>
                         </div>
-
-                            
-                            
-
                     </div>
                 </div>
             </div>
         
-                                    
+
         </div>
 
-  <?php include("includes/footer.php"); ?>
+    <?php else: Redirect("photos.php"); endif;?>    
+<?php include("includes/footer.php"); ?>
+ 
