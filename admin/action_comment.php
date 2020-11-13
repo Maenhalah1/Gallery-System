@@ -1,7 +1,8 @@
 <?php
+$Redirct_Past = $_SERVER['HTTP_REFERER'];
 if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
     
-    Redirect("comments.php");
+    Redirect($Redirct_Past);
     die();
 
 ?>
@@ -13,7 +14,7 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
 
 <?php
         if(empty($_GET['id']) || !isset($_GET['id'])) {
-            Redirect("comments.php");
+            Redirect($Redirct_Past);
             die();
         }
         $_GET['id'] = filter_var($_GET['id'], FILTER_SANITIZE_STRING);
@@ -21,13 +22,13 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
             $comment = comment::find_by_ID($_GET['id']);
             if($comment) {
                 $comment->delete();
-                Redirect("comments.php");
+                Redirect($Redirct_Past);
                 
             }else{
-                Redirect("comments.php");
+                Redirect($Redirct_Past);
             }
         }else{
-            Redirect("comments.php");
+            Redirect($Redirct_Past);
         }
 ?>
 <?php 
