@@ -1,6 +1,7 @@
 <?php ob_start();?>
 <?php include "init.php";?>
-
+<?php if(!$session->get_signed_in()) { Redirect("login.php"); exit();}?>
+<?php $admin = users::find_by_ID($session->user_id);?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title><?php echo ucwords( $admin->first_name ) . " " . ucwords( $admin->last_name ) . " | GS Admin"; ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
