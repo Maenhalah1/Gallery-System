@@ -8,7 +8,7 @@ require_once "admin/includes/n_config.php";
 require_once "admin" . DS . "classes" . DS . "database.php";
 require_once "admin" .  DS . "classes" . DS . "db_object.php";
 require_once "admin" . DS . "classes" . DS . "session.php";
-require_once "admin" . DS . "includes"  . DS . "functions.php";
+require_once "includes"  . DS . "functions.php";
 
 require_once "admin" . DS . "classes" . DS . "photo.php";
 require_once "admin" . DS . "classes" . DS . "users.php";
