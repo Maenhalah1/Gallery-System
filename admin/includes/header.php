@@ -1,5 +1,5 @@
 <?php ob_start();?>
-<?php include "init.php";?>
+<?php require_once ("init.php");?>
 <?php if(!$session->get_signed_in()) { Redirect("login.php"); exit();}?>
 <?php $admin = users::find_by_ID($session->user_id);?>
 

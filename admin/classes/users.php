@@ -33,6 +33,45 @@ class users extends db_object
         }
     }
 
+// get all images the user uploaded 
+    public function get_all_image_uploaded(){
+        if($this->username && $this->id){
+            if(file_exists($this->image_path . DS . $this->username)){
+                $images = scandir($this->image_path . DS . $this->username);
+                if(!empty($images)){
+                    $images = array_diff($images,array('.','..'));
+                    $allowed_ex = array("jpg","jpeg","png"); 
+                    foreach($images as $image){
+                        $exArr = explode('.',$image);
+                        $ex = end($exArr);
+                        $ex = strtolower($ex);
+                        if(!in_array($ex,$allowed_ex)){
+                            $images = array_diff($images,array($image));
+                        }
+                    }
+                    sort($images);
+                    return $images;
+                }else{
+                    return false;
+                }
+            }
+        }else{
+            return false;
+        }
+    }
+
+
+
+    // get size any images from the specifed user file
+    public function get_size_image($img){
+        if (file_exists($this->image_path . DS . $this->username . DS . $img)){
+            return filesize($this->image_path . DS . $this->username . DS . $img); 
+        }else{
+            return false;
+        }
+           
+    }
+
 
     // verify username and password that written by user
     public static function verify_user($username, $password)
@@ -94,6 +133,18 @@ class users extends db_object
                 }
             }
         
+    }
+
+    public function ajax_save_user_image($id,$image){
+        if($id == $this->id){
+            $id == $this->id;
+            $this->user_image = $image;
+            $this->save();
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
 
