@@ -148,6 +148,13 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
   
 
     } ?> 
+
+    <?php require_once("includes" . DS . "photos_library.php");?>
+
+   <?php 
+   
+   ?>
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -178,6 +185,7 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
                                         <label for="username">User name</label>
                                     <input type="text" name='username' class="form-control" value="<?php echo $user->username;?>" >
                                 </div> 
+                                
                                 <div class="form-group">
                                         <label for="email">Email</label>
                                     <input type="text" name='email' class="form-control" value="<?php echo $user->email;?>" >
@@ -196,10 +204,13 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
                                     <input type="text" name='password'  class="form-control" >
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" name='update'  value="Update" class="form-control btn btn-primary submit-button" >
+                                    <input type="submit" name='update'  value="Update" class="form-control btn btn-success submit-button" >
                                 </div>
                                 <div class="form-group">
-                                    <a href="action_user.php?do=delete&id=<?php echo $user->id;?>" class="form-control btn btn-danger submit-button" >Delete User</a>
+                                    <a id="user-id" href="action_user.php?do=delete&id=<?php echo $user->id;?>" class="form-control btn btn-danger submit-button" >Delete User</a>
+                                </div>
+                                <div class="form-group">
+                                    <a href="" data-toggle="modal" data-target="#photo-library" class="form-control btn btn-primary submit-button" >View The Library</a>
                                 </div>
                             </div>
                         </form>
