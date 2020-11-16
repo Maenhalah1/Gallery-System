@@ -26,6 +26,7 @@ if(!empty($comments)):
                         <h1 class="page-header">
                             COMMENTS
                         </h1>
+                        <?php echo $message;?>
                         <div class="col-md-12">
                             <table class="table table-hover">
                                 <thead>

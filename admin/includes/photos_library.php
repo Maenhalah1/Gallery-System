@@ -1,4 +1,6 @@
 <?php require_once("includes/init.php");?>
+<?php if(!$session->get_signed_in() ) { Redirect("login.php"); exit();}?>
+
 <?php $photos = $user->get_all_image_uploaded();?>
 
 
@@ -18,11 +20,13 @@
                       <?php foreach($photos as $photo): ?>
                           <div class="col-xs-2">
                             <a role="checkbox" aria-checked="false" tabindex="0" id="" href="#" class="thumbnail">
-                              <img class="modal_thumbnails img-responsive" src="<?php echo $user->image_path . DS . $user->username . DS . $photo; ?>" data="<!-- PHP LOOP HERE CODE HERE-->">
+                              <img class="modal_thumbnails img-responsive" src="<?php echo $user->image_path . DS . $user->username . DS . $photo; ?>" data="<?php echo $photo;?>">
                             </a>
                               <div class="photo-id hidden"></div>
                           </div>
+                          <div class="photo-name hidden"></div>
                       <?php endforeach;?>
+                      
                 <?php endif;?>  
 
               

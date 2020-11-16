@@ -15,4 +15,5 @@ require_once "admin" . DS . "classes" . DS . "users.php";
 require_once "admin" . DS . "classes" . DS . "comment.php";
 
 $session = new session();
+$message = $session->message();
 ?>

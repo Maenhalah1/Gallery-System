@@ -23,6 +23,7 @@ $comments = comment::get_all_fields();
                         <h1 class="page-header">
                             COMMENTS
                         </h1>
+                        <?php echo $message;?>
                         <div class="col-md-12">
                             <table class="table table-hover">
                                 <thead>
@@ -35,20 +36,22 @@ $comments = comment::get_all_fields();
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($comments as $comment):?>
-                                <tr>
-                                    <td><?php echo $comment->id; ?>
-                                        <div class='action_links'>
-                                            <a href="action_comment.php?do=delete&id=<?php echo $comment->id;?>">Delete</a>
-                                        </div>
-                                    </td>
+                                    <?php if(!empty($comments)): ?>
+                                        <?php foreach ($comments as $comment):?>
+                                        <tr>
+                                            <td><?php echo $comment->id; ?>
+                                                <div class='action_links'>
+                                                    <a href="action_comment.php?do=delete&id=<?php echo $comment->id;?>">Delete</a>
+                                                </div>
+                                            </td>
 
-                                    
-                                    <td><?php echo $comment->author; ?></td>
-                                    <td><?php echo $comment->body; ?></td>
-                                    <td><?php echo $comment->added_date; ?></td>
-                                </tr>
-                                <?php endforeach; ?>
+                                            
+                                            <td><?php echo $comment->author; ?></td>
+                                            <td><?php echo $comment->body; ?></td>
+                                            <td><?php echo $comment->added_date; ?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                        <?php endif;?>
                                 </tbody>
                             </table>
                         </div>

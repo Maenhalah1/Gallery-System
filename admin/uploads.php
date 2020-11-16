@@ -8,7 +8,8 @@
         $photo->set_file($_FILES['upload_file']);
 
         if($photo->save()){
-            $message = "Photo uploded succesfully";
+            $session->message("<p class='alert alert-success edit-alert'>The Photo {$photo->title} has Been Uploaded Successfully</p>");
+            Redirect("uploads.php");
         }else{
             $message = join("<br>", $photo->error);
         }
@@ -35,8 +36,8 @@
                         <h1 class="page-header">
                             UPLOADS
                         </h1>
+                        <?php echo $message;?>
                         <div class="col-md-6">
-                            <?php echo isset($message) ? $message : "";?>
                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
 
                                     <div class="form-group">

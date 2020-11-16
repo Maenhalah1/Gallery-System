@@ -10,7 +10,7 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
 
 <?php elseif($_GET['do'] == 'delete'):  //if do is delete ?>
 
- <?php include("includes/init.php"); ?>
+ <?php require_once("includes/init.php"); ?>
  <?php if(!$session->get_signed_in()) { Redirect("login.php");}?>
 
 <?php
@@ -22,7 +22,8 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
         if(is_numeric($_GET['id'])) {
             $user = users::find_by_ID($_GET['id']);
             if($user) {
-                $user->delete();
+                $user->delete_with_dir();
+                $session->message("<p class='alert alert-danger edit-alert'>The user {$user->username} has Been Deleted Successfully</p>");
                 Redirect("users.php");
             }else{
                 Redirect("users.php");
@@ -49,10 +50,12 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
             if($user->user_image['error'] != 0) {
                 $user->user_image= null;
                 $user->save();
+                $session->message("<p class='alert alert-success edit-alert'>The user {$user->username} has Been Created Successfully</p>");
                 Redirect("users.php");
             }else{
                 $user->set_file($user->user_image);
                 $user->save_data_and_image();
+                $session->message("<p class='alert alert-success edit-alert'>The user {$user->username} has Been Created Successfully</p>");
                 Redirect("users.php");
             }
            
@@ -136,12 +139,14 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
             $user->first_name = $_POST['first_name'];
             $user->password = empty($_POST['password']) ? $user->password : $_POST['password'];
             if($_FILES['user_image']['error'] != 0) {
+                $session->message("<p class='alert alert-success edit-alert'>The user {$user->username} has Been Updated Successfully</p>");
                 $user->save();
                 Redirect("users.php");
             }else{
                 $user->user_image = $_FILES['user_image']['name'];
                 $user->set_file($user->user_image);
                 $user->save_data_and_image();
+                $session->message("<p class='alert alert-success edit-alert'>The user {$user->username} has Been Updated Successfully</p>");
                 Redirect("users.php");
             }
            
@@ -170,10 +175,10 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 userEdit">
                         <h1 class="page-header">USERS</h1>
                         <div class="col-md-6">
-                            <img class="img-responsive showing-img" src="<?php echo $user->get_image();?>">
+                            <img class="img-responsive showing-img" id="profile-img" src="<?php echo $user->get_image();?>">
                         </div>
                         <form action="<?php echo "action_user.php?do=edit&id=" . $user->id;?>" method="post" enctype="multipart/form-data">
                             <div class="col-md-6">
@@ -210,7 +215,7 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
                                     <a id="user-id" href="action_user.php?do=delete&id=<?php echo $user->id;?>" class="form-control btn btn-danger submit-button" >Delete User</a>
                                 </div>
                                 <div class="form-group">
-                                    <a href="" data-toggle="modal" data-target="#photo-library" class="form-control btn btn-primary submit-button" >View The Library</a>
+                                    <a href="" data-toggle="modal" data-target="#photo-library" class="form-control btn btn-primary submit-button" >Choose From Old Photos</a>
                                 </div>
                             </div>
                         </form>

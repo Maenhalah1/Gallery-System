@@ -1,7 +1,7 @@
 <?php ob_start();?>
 <?php require_once ("init.php");?>
-<?php if(!$session->get_signed_in()) { Redirect("login.php"); exit();}?>
-<?php $admin = users::find_by_ID($session->user_id);?>
+<?php if($session->get_signed_in() ) {  $admin = users::find_by_ID($session->user_id); }?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo ucwords( $admin->first_name ) . " " . ucwords( $admin->last_name ) . " | GS Admin"; ?></title>
+    <title><?php echo isset($admin) ? ucwords( $admin->first_name ) . " " . ucwords( $admin->last_name ) . " | GS Admin" : "Admin"; ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

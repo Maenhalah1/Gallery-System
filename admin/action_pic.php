@@ -19,6 +19,7 @@ if(empty($_GET['do']) || empty($_GET['id']) || !isset($_GET['do']) || !isset($_G
             $photo = photo::find_by_ID($_GET['id']);
             if($photo) {
                 $photo->delete_photo();
+                $session->message("<p class='alert alert-danger edit-alert'>The photo ({$photo->filename}) has Been Deleted Successfully</p>");
                 Redirect("photos.php");
             }else{
                 Redirect("photos.php");
@@ -48,7 +49,9 @@ if(empty($_GET['do']) || empty($_GET['id']) || !isset($_GET['do']) || !isset($_G
             $photo->caption = $_POST['caption'];
             $photo->alternate_text = $_POST['alter-text'];
             $photo->description = $_POST['description'];
+            $session->message("<p class='alert alert-success edit-alert'>The photo ({$photo->filename}) has Been Updated Successfully</p>");
             $photo->save();
+            Redirect("photos.php");
            
         }
 
@@ -73,7 +76,7 @@ if(empty($_GET['do']) || empty($_GET['id']) || !isset($_GET['do']) || !isset($_G
                             Photos
                             <small>Subheading</small>
                         </h1>
-                        <form action="<?php echo "action_pic.php?do=edit&id=5"?>" method="post">
+                        <form action="<?php echo "action_pic.php?do=edit&id=" . $photo->id;?>" method="post">
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <input type="text" name='title' placeholder='Title' class="form-control" value="<?php echo $photo->title; ?>">

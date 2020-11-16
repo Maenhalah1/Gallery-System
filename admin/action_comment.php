@@ -22,6 +22,8 @@ if(empty($_GET['do'])  || !isset($_GET['do'])): //check if get do or id is empty
             $comment = comment::find_by_ID($_GET['id']);
             if($comment) {
                 $comment->delete();
+                $session->message("<p class='alert alert-danger edit-alert'>The comment ({$comment->id}) has Been Deleted Successfully</p>");
+
                 Redirect($Redirct_Past);
                 
             }else{
