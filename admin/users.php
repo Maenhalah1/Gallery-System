@@ -23,6 +23,7 @@ $users = users::get_all_fields();
                         <h1 class="page-header">
                             USERS
                         </h1>
+                        <?php echo $message;?>
                         <a href="action_user.php?do=add" class='btn btn-primary'>Create User</a>
                         <div class="col-md-12">
                             <table class="table table-hover">

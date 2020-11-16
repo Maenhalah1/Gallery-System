@@ -11,4 +11,5 @@ require_once "includes"  . DS . "functions.php";
 require_once "classes" . DS . "session.php";
 
 $session = new session();
+$message = $session->message();
 ?>

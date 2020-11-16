@@ -38,3 +38,8 @@ footer{
 .indection-active:hover{
     color:#FFF;
 }
+.edit-alert{
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}

@@ -23,6 +23,7 @@ $photos = photo::get_all_fields();
                         <h1 class="page-header">
                             PHOTOS
                         </h1>
+                        <?php echo $message;?>
                         <div class="col-md-12">
                             <table class="table table-hover">
                                 <thead>

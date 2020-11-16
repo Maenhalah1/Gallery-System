@@ -60,12 +60,19 @@ class users extends db_object
         }
     }
 
+    public function get_path_pic($img){
+        if(file_exists($this->image_path . DS . $this->username . DS . $img)){
+            return $this->image_path . DS . $this->username . DS . $img;
+        }else{
+            return false;
+        }
+    }
 
 
     // get size any images from the specifed user file
     public function get_size_image($img){
-        if (file_exists($this->image_path . DS . $this->username . DS . $img)){
-            return filesize($this->image_path . DS . $this->username . DS . $img); 
+        if ($this->get_path_pic($img)){
+            return filesize($this->get_path_pic($img)); 
         }else{
             return false;
         }
@@ -137,14 +144,71 @@ class users extends db_object
 
     public function ajax_save_user_image($id,$image){
         if($id == $this->id){
-            $id == $this->id;
+            global $database;
             $this->user_image = $image;
-            $this->save();
-            return true;
+            $sql = "UPDATE " . self::$db_table . " SET user_image = :image WHERE id = :id";
+            $database->query($sql,array(":image" => $this->user_image , ":id" => $this->id));
+            return $this->get_image();
         }else{
             return false;
         }
 
+    }
+
+    public function get_info_image_user_for_sidbar($userid, $photoname){
+        $user = users::find_by_ID($userid);
+        $fullname =$user->first_name . " " . $user->last_name;
+        $output = "<a class='thumbnail'><img width='100' src='" . $user->get_path_pic($photoname) . "'></a>";
+        $output .= "<p>Uploaded By {$fullname}</p>";
+        $output .= "<p>{$photoname}</p>";
+        $size = (int)$user->get_size_image($photoname);
+        if($size > 1000000) {
+            $t = "MB";
+            $size = number_format($size  * 0.000001, 1) ;
+        }else {
+            $t = "KB";
+            $size = number_format($size  * 0.001, 1);
+        }
+        $output .= "<p>{$size} $t</p>";
+        return $output;
+    }
+
+    // delete user with directory
+    public function delete_with_dir() {
+        if(!empty($this->username && $this->id)) {
+            if($this->delete()) {
+                $target = SITE_PATH . DS . 'admin' . DS . $this->image_path . DS . $this->username;
+                if(is_dir($target)){
+                    $this->delete_files_in_dir($target);
+                    return rmdir($target) ? true : false;
+                    echo "yes";
+                }
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    //Delete all files in directory
+    private function delete_files_in_dir($dir){
+        if(is_dir($dir)){
+            $dir .= DS;
+            $dirfiles = glob($dir ."*",GLOB_MARK);
+            if(empty($dirfiles)){
+                return;
+            }else{
+                foreach($dirfiles as $file){
+                    if(is_dir($file)){
+                        $this->delete_files_in_dir($file);
+                    }else{
+                        unlink($file);
+                    }
+                    
+                }
+            }
+        }
     }
 
 

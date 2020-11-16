@@ -17,16 +17,19 @@ if(isset($_POST['submit'])) {
     $body   = filter_var($_POST['body'] ,FILTER_SANITIZE_STRING);
     $new_comment = comment::create_comment($photo->id,$author,$body);
     if($new_comment) {
+        $session->message("<p class='alert alert-success edit-alert'>The Comment Your published has Been Append Successfully</p>");
         $new_comment->save();
+        
+
         Redirect("photo.php?id={$photo->id}");
     }else{
-        $message= "You have some problems saving";
+        $session->message("<p class='alert alert-danger edit-alert'>Somthing Wrong</p>");
+
     }
 
 }else{
     $author="";
     $body="";
-    $message="";
 }
 
 $all_comments = comment::find_comments_by_photo_id($photo->id);
@@ -69,12 +72,12 @@ $all_comments = comment::find_comments_by_photo_id($photo->id);
                 <hr>
 
                 <!-- Post Content -->
-                <p class="lead"><?php ?></p>
+                <p class="lead"><?php echo $message;?></p>
                 
                 <hr>
 
                 <!-- Blog Comments -->
-
+                
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Write a Comment:</h4>
