@@ -45,7 +45,7 @@ $users = users::get_all_fields();
                                     <td>
                                         <?php echo $user->username; ?>
                                         <div class='action_links'>
-                                            <a href="action_user.php?do=delete&id=<?php echo $user->id;?>">Delete</a>
+                                            <a class="delete-link" href="action_user.php?do=delete&id=<?php echo $user->id;?>">Delete</a>
                                             <a href="action_user.php?do=edit&id=<?php echo $user->id;?>"">Edit</a>
                                             <a href="#">View</a>
                                         </div>

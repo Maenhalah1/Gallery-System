@@ -211,6 +211,10 @@ class users extends db_object
         }
     }
 
+    public function photos_added (){
+        return photo::find_this_query("SELECT * FROM photos WHERE user_id = " . $this->id);
+    }
+
 
 
 

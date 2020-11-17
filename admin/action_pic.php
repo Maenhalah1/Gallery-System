@@ -115,19 +115,19 @@ if(empty($_GET['do']) || empty($_GET['id']) || !isset($_GET['do']) || !isset($_G
                                         </p>
                                         <p class="text">
                                             <?php $type = explode(".",$photo->filename); $type = end($type); $type= strtoupper($type);?>
-                                        File Type: <span class="data"><?php echo $type;?></span>
+                                            File Type: <span class="data"><?php echo $type;?></span>
                                         </p>
                                         <p class="text">
-                                        <?php 
-                                        if($photo->size > 1000000) {
-                                            $t = "MB";
-                                            $size = number_format($photo->size * 0.000001, 1) ;
-                                        }else {
-                                            $t = "KB";
-                                            $size = number_format($photo->size * 0.001, 1);
-                                        }
-                                        ?>
-                                        File Size: <span class="data"><?php echo $size . " " . $t;?></span>
+                                            <?php 
+                                            if($photo->size > 1000000) {
+                                                $t = "MB";
+                                                $size = number_format($photo->size * 0.000001, 1) ;
+                                            }else {
+                                                $t = "KB";
+                                                $size = number_format($photo->size * 0.001, 1);
+                                            }
+                                            ?>
+                                            File Size: <span class="data"><?php echo $size . " " . $t;?></span>
                                         </p>
                                         </div>
                                         <div class="info-box-footer clearfix">

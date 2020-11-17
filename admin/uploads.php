@@ -1,11 +1,12 @@
 <?php include("includes/header.php"); ?>
 <?php if(!$session->get_signed_in()) { Redirect("login.php");}?>
 <?php
-    if(isset($_POST['submit'])) {
+    if(isset($_FILES['file'])) {
 
         $photo = new photo();
         $photo->title = $_POST['title'];
-        $photo->set_file($_FILES['upload_file']);
+        $photo->set_file($_FILES['file']);
+        $photo->user_id = $session->user_id;
 
         if($photo->save()){
             $session->message("<p class='alert alert-success edit-alert'>The Photo {$photo->title} has Been Uploaded Successfully</p>");
@@ -37,19 +38,24 @@
                             UPLOADS
                         </h1>
                         <?php echo $message;?>
-                        <div class="col-md-6">
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
 
-                                    <div class="form-group">
-                                        <input type="text" name="title" placeholder="Title" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="file" name="upload_file" >
-                                    </div>
-
-
-                                    <input type="submit" value="Upload" class="btn btn-primary" name="submit">
-                            </form>
+                                        <div class="form-group">
+                                            <input type="text" name="title" placeholder="Title" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="file" name="file" >
+                                        </div>
+                                        <input type="submit" value="Upload" class="btn btn-primary" name="submit">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class='dropzone'>
+                            </div>
                         </div>
 
                     </div>

@@ -47,6 +47,18 @@ $(document).ready(function(){
         });
     });
 
+    /*********************** Edit Photo Slide Bar **********************/ 
+$(".info-box-header").click(function(){
+    $(".inside").slideToggle("fast");
+    $("#toggle").toggleClass("glyphicon glyphicon-menu-down , glyphicon glyphicon-menu-up");
+});
+
+$(".delete-link").click(function(){
+
+    return confirm("Are You Sure To Deleting ?");
+
+});
+
 
 
     tinymce.init({selector:'.text-editor'});
