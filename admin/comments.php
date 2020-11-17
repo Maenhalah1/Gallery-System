@@ -41,7 +41,7 @@ $comments = comment::get_all_fields();
                                         <tr>
                                             <td><?php echo $comment->id; ?>
                                                 <div class='action_links'>
-                                                    <a href="action_comment.php?do=delete&id=<?php echo $comment->id;?>">Delete</a>
+                                                    <a class="delete-link" href="action_comment.php?do=delete&id=<?php echo $comment->id;?>">Delete</a>
                                                 </div>
                                             </td>
 

@@ -1,7 +1,7 @@
 <?php include("includes/header.php"); ?>
 <?php if(!$session->get_signed_in()) { Redirect("login.php");}?>
 <?php
-$photos = photo::get_all_fields();
+$photos = users::find_by_ID($session->user_id)->photos_added();
 ?>
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -33,6 +33,7 @@ $photos = photo::get_all_fields();
                                     <th>File name</th>
                                     <th>Title</th>
                                     <th>Size</th>
+                                    <th>user id</th>
                                     <th>Comments</th>
                                 </tr>
                                 </thead>
@@ -41,7 +42,7 @@ $photos = photo::get_all_fields();
                                 <tr>
                                     <td><img class='img-gallery'src="<?php echo $photo->picture_path(); ?>" alt="image">
                                     <div>
-                                        <a href="action_pic.php?do=delete&id=<?php echo $photo->id;?>">Delete</a>
+                                        <a class="delete-link" href="action_pic.php?do=delete&id=<?php echo $photo->id;?>">Delete</a>
                                         <a href="action_pic.php?do=edit&id=<?php echo $photo->id;?>"">Edit</a>
                                         <a href="../photo.php?id=<?php echo $photo->id; ?>">View</a>
                                     </div>
@@ -51,6 +52,7 @@ $photos = photo::get_all_fields();
                                     <td><?php echo $photo->filename; ?></td>
                                     <td><?php echo $photo->title; ?></td>
                                     <td><?php echo $photo->size; ?></td>
+                                    <td><?php echo $photo->user_id; ?></td>
                                     <td>
                                         <?php
                                          $comments=comment::find_comments_by_photo_id($photo->id);

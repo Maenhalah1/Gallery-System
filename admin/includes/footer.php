@@ -31,7 +31,7 @@
         chart.draw(data, options);
       }
     </script>
-
+    <script src="js/dropzone.js"></script> 
     <script src="js/scripts.js"></script> 
 </body>
 

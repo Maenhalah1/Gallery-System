@@ -52,6 +52,7 @@ class session {
             $this->user_id = $_SESSION['userid'];
             $this->signed_in=true;
         }else{
+            
             unset($this->user_id);
             $this->signed_in=false;
         }
@@ -59,8 +60,7 @@ class session {
 
     public function logout() {
         if(isset($_SESSION['userid']) && $this->signed_in=true) {
-            session_unset();
-            session_destroy();
+            unset($_SESSION['userid']);
             unset($this->user_id);
             $this->signed_in=false;
         }
