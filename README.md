@@ -1,7 +1,7 @@
 # Gallery-System
 >(not Finished)
 
-**Working it With 
+**Creating By
  ( PHP , PHP OOP , Some Plugins Js , Js and JQuery, HTML , CSS, and Some Ajax )**
 
 
